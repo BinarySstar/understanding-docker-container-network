@@ -1,0 +1,34 @@
+services:
+  api1:
+    build: .
+    container_name: fastapi_container_1
+    ports:
+      - "8001:8000"
+    networks:
+      - fastapi_network
+    environment:
+      - CONTAINER_NAME=fastapi_container_1
+  
+  api2:
+    build: .
+    container_name: fastapi_container_2
+    ports:
+      - "8002:8000"
+    networks:
+      - fastapi_network
+    environment:
+      - CONTAINER_NAME=fastapi_container_2
+  
+  api3:
+    build: .
+    container_name: fastapi_container_3
+    ports:
+      - "8003:8000"
+    networks:
+      - fastapi_network
+    environment:
+      - CONTAINER_NAME=fastapi_container_3
+
+networks:
+  fastapi_network:
+    driver: bridge
