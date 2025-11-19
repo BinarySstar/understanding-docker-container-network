@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 
 app = FastAPI()
 
 
 @app.get("/")
-async def root():
-    return {"response": "Hello World~~"}
+async def root(request: Request):
+    client_host = request.client.host
+    client_port = request.client.port
+    return {"response": f"Hello World~~ from {client_host}:{client_port}"}
