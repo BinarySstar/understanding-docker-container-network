@@ -8,7 +8,9 @@ services:
       - fastapi_network
     environment:
       - CONTAINER_NAME=fastapi_container_1
-  
+    extra_hosts:
+              - host.docker.internal:host-gateway
+
   api2:
     build: .
     container_name: fastapi_container_2
@@ -18,6 +20,8 @@ services:
       - fastapi_network
     environment:
       - CONTAINER_NAME=fastapi_container_2
+    extra_hosts:
+              - host.docker.internal:host-gateway
   
   api3:
     build: .
@@ -28,7 +32,8 @@ services:
       - fastapi_network
     environment:
       - CONTAINER_NAME=fastapi_container_3
-
+    extra_hosts:
+              - host.docker.internal:host-gateway
 networks:
   fastapi_network:
     driver: bridge
